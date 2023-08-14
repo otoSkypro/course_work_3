@@ -16,3 +16,16 @@ def sort_operations_by_date(operations):
 
     result = sorted(valid_operations, key=lambda operation: operation['date'], reverse=True)
     return result
+
+def get_executed_only(operations, quantity=5):
+    result = []
+
+    for operation in operations:
+        if operation['state'] == 'EXECUTED':
+            result.append(operation)
+        if len(result) == quantity:
+            break
+
+    return result
+
+
